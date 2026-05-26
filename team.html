@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Collaboration — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header flex-between reveal"><div><h1>Team Collaboration</h1><p>Manage workspace members and permissions</p></div><button class="btn btn-primary" onclick="Notifications.success('Invite sent')">+ Invite Member</button></div>
+      <div class="team-grid reveal" id="team-grid"></div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Permission Management</h3>
+        <div class="table-wrap"><table><thead><tr><th>Role</th><th>Create Links</th><th>View Analytics</th><th>Manage Team</th><th>API Access</th></tr></thead>
+        <tbody><tr><td><strong>Admin</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><td><strong>Editor</strong></td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>Analyst</strong></td><td>—</td><td>✓</td><td>—</td><td>—</td></tr>
+        <tr><td><strong>Viewer</strong></td><td>—</td><td>✓</td><td>—</td><td>—</td></tr></tbody></table></div>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Shared Workspace Activity</h3><div class="timeline" id="team-activity"></div></div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{document.getElementById('team-grid').innerHTML=DEMO.team.map(m=>`<div class="team-member reveal"><div class="team-avatar">${m.avatar}</div><div style="flex:1"><strong>${m.name}</strong><div class="text-muted" style="font-size:0.85rem">${m.role} • ${m.email}</div><div class="text-muted" style="font-size:0.8rem">${m.links} links created</div></div><span class="badge badge-${m.status==='online'?'success':m.status==='away'?'warning':'primary'}">${m.status}</span></div>`).join('');document.getElementById('team-activity').innerHTML=DEMO.activities.slice(0,8).map(a=>`<div class="timeline-item"><div class="timeline-time">${a.time}</div><div class="timeline-text"><strong>${a.user}</strong> — ${a.action}: ${a.detail}</div></div>`).join('');});</script>
+</body>
+</html>

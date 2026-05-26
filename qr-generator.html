@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout">
+    <div class="main-content">
+      <header class="topbar"></header>
+      <main class="page-content">
+        <div class="page-header reveal"><h1>QR Code Generator</h1><p>Create customizable QR codes for your short links</p></div>
+        <div class="dashboard-row">
+          <div class="glass-card reveal text-center">
+            <div class="qr-preview-box"><canvas id="qr-canvas" class="qr-canvas"></canvas></div>
+            <button class="btn btn-primary mt-3" id="download-qr">Download PNG</button>
+          </div>
+          <div class="glass-card reveal">
+            <div class="form-group"><label class="form-label">URL or Short Link</label><input type="url" class="form-input" id="qr-url" value="https://lnk.io/launch-day" /></div>
+            <div class="grid grid-2 gap-2">
+              <div class="form-group"><label class="form-label">Foreground Color</label><input type="color" class="form-input" id="qr-fg-color" value="#0F172A" /></div>
+              <div class="form-group"><label class="form-label">Background Color</label><input type="color" class="form-input" id="qr-bg-color" value="#FFFFFF" /></div>
+            </div>
+            <div class="form-group"><label class="form-label">Logo Upload</label><input type="file" class="form-input" accept="image/*" /><p class="text-muted mt-1" style="font-size:0.8rem">Demo UI — logo overlay simulated</p></div>
+            <h4 class="mb-2">QR Styles</h4>
+            <div class="flex gap-2 flex-wrap">
+              <button class="filter-chip qr-style active" data-style="classic">Classic</button>
+              <button class="filter-chip qr-style" data-style="rounded">Rounded</button>
+              <button class="filter-chip qr-style" data-style="dots">Dots</button>
+              <button class="filter-chip qr-style" data-style="gradient">Gradient</button>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card reveal mt-3"><h3 class="mb-3">QR Templates Gallery</h3>
+          <div class="links-grid">
+            <div class="link-card"><div class="qr-preview-box" style="width:120px;height:120px;margin:0 auto 1rem"><span>📷</span></div><strong>Event Ticket</strong><p class="text-muted">2,340 scans</p></div>
+            <div class="link-card"><div class="qr-preview-box" style="width:120px;height:120px;margin:0 auto 1rem"><span>📷</span></div><strong>Restaurant Menu</strong><p class="text-muted">8,920 scans</p></div>
+            <div class="link-card"><div class="qr-preview-box" style="width:120px;height:120px;margin:0 auto 1rem"><span>📷</span></div><strong>Product Packaging</strong><p class="text-muted">15,670 scans</p></div>
+            <div class="link-card"><div class="qr-preview-box" style="width:120px;height:120px;margin:0 auto 1rem"><span>📷</span></div><strong>Business Card</strong><p class="text-muted">4,230 scans</p></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script><script src="js/qr.js"></script>
+</body>
+</html>

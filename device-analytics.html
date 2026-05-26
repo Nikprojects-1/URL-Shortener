@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Device Analytics — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/analytics.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header reveal"><h1>Device Analytics</h1><p>Device, browser, and operating system breakdown</p></div>
+      <div class="device-grid reveal" id="device-cards"></div>
+      <div class="charts-grid mt-3">
+        <div class="chart-card reveal"><h3>Browser Distribution</h3><div class="donut-container"><canvas id="browser-donut"></canvas><div class="chart-legend"></div></div></div>
+        <div class="chart-card reveal"><h3>Operating Systems</h3><div id="os-list"></div></div>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Detailed Browser Report</h3>
+        <div class="table-wrap"><table><thead><tr><th>Browser</th><th>Clicks</th><th>Share</th><th>Trend</th></tr></thead><tbody id="browser-table"></tbody></table></div>
+      </div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/charts.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{document.getElementById('device-cards').innerHTML=DEMO.devices.map(d=>`<div class="device-card reveal"><div class="device-icon">${d.icon}</div><div class="device-percent">${d.percent}%</div><div class="stat-label">${d.type}</div><div class="text-muted">${App.formatNumber(d.clicks)} clicks</div></div>`).join('');document.getElementById('os-list').innerHTML=DEMO.os.map(o=>`<div class="referrer-item"><span>${o.name}</span><div class="referrer-bar"><div class="referrer-fill" style="width:${o.percent}%"></div></div><span>${o.percent}%</span></div>`).join('');document.getElementById('browser-table').innerHTML=DEMO.browsers.map(b=>`<tr><td>${b.name}</td><td>${App.formatNumber(b.clicks)}</td><td>${b.percent}%</td><td class="text-success">↑ ${(Math.random()*5).toFixed(1)}%</td></tr>`).join('');Charts.donutChart('browser-donut',DEMO.browsers.map(b=>b.clicks),DEMO.browsers.map(b=>b.name));});</script>
+</body>
+</html>

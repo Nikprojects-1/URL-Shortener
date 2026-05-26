@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link Details — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/analytics.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div id="link-detail-content"></div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/charts.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const id = new URLSearchParams(location.search).get('id') || 1;
+      const link = DEMO.links.find(l => l.id == id) || DEMO.links[0];
+      document.getElementById('link-detail-content').innerHTML = `
+        <div class="page-header flex-between reveal"><div><h1>${link.title}</h1><p class="link-url" style="font-size:1.1rem">${link.shortUrl}</p></div>
+          <div class="flex gap-2"><button class="btn btn-secondary" data-copy="https://${link.shortUrl}">Copy</button><a href="qr-generator.html" class="btn btn-primary">QR Code</a></div></div>
+        <div class="dashboard-grid reveal">
+          <div class="stat-card"><div class="stat-label">Total Clicks</div><div class="stat-value">${App.formatNumber(link.clicks)}</div></div>
+          <div class="stat-card"><div class="stat-label">Unique Clicks</div><div class="stat-value">${App.formatNumber(link.uniqueClicks)}</div></div>
+          <div class="stat-card"><div class="stat-label">QR Scans</div><div class="stat-value">${App.formatNumber(link.qrScans)}</div></div>
+          <div class="stat-card"><div class="stat-label">Status</div><div class="stat-value"><span class="badge badge-success">${link.status}</span></div></div>
+        </div>
+        <div class="chart-card reveal"><h3>Click History (30 days)</h3><canvas id="clicks-chart"></canvas></div>
+        <div class="dashboard-row reveal">
+          <div class="glass-card"><h3 class="mb-2">Details</h3><p><strong>Destination:</strong> ${link.longUrl}</p><p class="mt-1"><strong>Campaign:</strong> ${link.campaign}</p><p class="mt-1"><strong>Created:</strong> ${link.created}</p><p class="mt-1"><strong>Tags:</strong> ${link.tags.map(t=>'<span class="badge badge-primary">'+t+'</span>').join(' ')}</p></div>
+          <div class="glass-card"><h3 class="mb-2">Top Sources</h3>${DEMO.referrers.slice(0,5).map(r=>'<div class="referrer-item"><span>'+r.source+'</span><span>'+r.percent+'%</span></div>').join('')}</div>
+        </div>`;
+      Charts.lineChart('clicks-chart', DEMO.dailyClicks.slice(0, 30));
+    });
+  </script>
+</body>
+</html>

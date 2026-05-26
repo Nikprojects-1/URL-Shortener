@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/analytics.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout">
+    <div class="main-content">
+      <header class="topbar"></header>
+      <main class="page-content">
+        <div class="page-header flex-between reveal">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Welcome back! Here's your link performance overview.</p>
+          </div>
+          <div class="date-range-picker">
+            <button class="filter-chip active">7 days</button>
+            <button class="filter-chip">30 days</button>
+            <button class="filter-chip">90 days</button>
+          </div>
+        </div>
+
+        <div class="dashboard-grid reveal" id="dashboard-stats"></div>
+
+        <div class="dashboard-row">
+          <div class="chart-card reveal">
+            <h3>Click Growth <span class="badge badge-success">+23.4%</span></h3>
+            <canvas id="clicks-chart"></canvas>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Performance Score</h3>
+            <div id="ctr-progress"></div>
+          </div>
+        </div>
+
+        <div class="dashboard-row">
+          <div class="glass-card reveal">
+            <h3 class="mb-3">Top Performing Links</h3>
+            <div id="top-links"></div>
+          </div>
+          <div class="glass-card reveal">
+            <h3 class="mb-3">Recent Activity</h3>
+            <div class="timeline" id="recent-activity"></div>
+          </div>
+        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card reveal">
+            <h3>Traffic by Device</h3>
+            <div class="donut-container">
+              <canvas id="device-donut" width="200" height="200"></canvas>
+              <div class="chart-legend"></div>
+            </div>
+          </div>
+          <div class="chart-card reveal">
+            <h3>Monthly Clicks</h3>
+            <div class="bar-chart" id="monthly-bars"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/analytics.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const s = DEMO.stats;
+      document.getElementById('dashboard-stats').innerHTML = `
+        <div class="stat-card"><div class="stat-label">Total Links</div><div class="stat-value">${App.formatNumber(s.totalLinks)}</div><div class="stat-change up">↑ ${s.linksGrowth}%</div></div>
+        <div class="stat-card"><div class="stat-label">Total Clicks</div><div class="stat-value">${App.formatNumber(s.totalClicks)}</div><div class="stat-change up">↑ ${s.clickGrowth}%</div></div>
+        <div class="stat-card"><div class="stat-label">Active Campaigns</div><div class="stat-value">${s.activeCampaigns}</div><div class="stat-change up">↑ 5 new</div></div>
+        <div class="stat-card"><div class="stat-label">QR Codes Generated</div><div class="stat-value">${App.formatNumber(s.qrGenerated)}</div><div class="stat-change up">↑ 18%</div></div>
+      `;
+      document.getElementById('top-links').innerHTML = DEMO.links.slice(0, 8).map(l => `
+        <div class="link-item">
+          <div class="link-icon">🔗</div>
+          <div class="link-info"><div class="link-title">${l.title}</div><div class="link-url">${l.shortUrl}</div></div>
+          <div class="link-stats"><div class="link-clicks">${App.formatNumber(l.clicks)}</div><div class="text-muted" style="font-size:0.75rem">clicks</div></div>
+        </div>
+      `).join('');
+      document.getElementById('recent-activity').innerHTML = DEMO.activities.slice(0, 6).map(a => `
+        <div class="timeline-item"><div class="timeline-time">${a.time}</div><div class="timeline-text"><strong>${a.action}</strong> — ${a.detail}</div></div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>

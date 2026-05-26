@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LinkPulse - Premium URL Shortener & Link Analytics Platform" />
+  <title>LinkPulse — URL Shortener & Link Analytics</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="landing-page">
+  <div class="particles"></div>
+
+  <nav class="landing-nav">
+    <div class="container">
+      <a href="index.html" class="nav-logo">⚡ Link<span>Pulse</span></a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-ghost btn-icon" data-theme-toggle aria-label="Toggle theme">🌙</button>
+        <a href="dashboard.html" class="btn btn-secondary">Log In</a>
+        <a href="create-link.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-badge">🚀 Trusted by 50,000+ teams worldwide</div>
+      <h1>Shorten Links.<br><span class="gradient-text">Track Everything.</span></h1>
+      <p>Create powerful short links, generate QR codes, and unlock deep analytics — all in one premium platform.</p>
+
+      <div class="glass shorten-box">
+        <form id="shorten-form">
+          <div class="input-group">
+            <input type="url" class="form-input" id="long-url" placeholder="Paste your long URL here..." required />
+            <button type="submit" class="btn btn-primary btn-lg">Shorten URL →</button>
+          </div>
+        </form>
+        <div id="short-result"></div>
+      </div>
+
+      <div class="floating-cards">
+        <div class="glass float-card"><strong>lnk.io/launch</strong><br><span class="text-muted">12.4K clicks</span></div>
+        <div class="glass float-card"><strong>📊 +23% growth</strong><br><span class="text-muted">This month</span></div>
+        <div class="glass float-card"><strong>🌍 47 countries</strong><br><span class="text-muted">Global reach</span></div>
+      </div>
+
+      <div class="flex-center gap-2 mt-4">
+        <a href="dashboard.html" class="btn btn-primary btn-lg">Start Free Trial</a>
+        <a href="analytics.html" class="btn btn-secondary btn-lg">View Demo Dashboard</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="landing-stats-section">
+    <div class="container" id="landing-stats"></div>
+  </section>
+
+  <section class="section" id="analytics">
+    <div class="container">
+      <div class="text-center reveal mb-4">
+        <h2>Powerful <span class="gradient-text">Analytics</span></h2>
+        <p class="text-muted">Real-time insights across clicks, geography, devices, and campaigns</p>
+      </div>
+      <div class="grid grid-3 gap-3">
+        <div class="glass-card reveal">
+          <h3>📈 Click Tracking</h3>
+          <p class="text-muted mt-2">Monitor every click with timestamps, referrers, and unique visitors.</p>
+          <div class="stat-value mt-3 gradient-text">1.8M+</div>
+          <p class="text-muted">clicks tracked this month</p>
+        </div>
+        <div class="glass-card reveal">
+          <h3>🌍 Geographic Data</h3>
+          <p class="text-muted mt-2">See where your audience lives with country and city breakdowns.</p>
+          <div class="stat-value mt-3 gradient-text">190+</div>
+          <p class="text-muted">countries reached</p>
+        </div>
+        <div class="glass-card reveal">
+          <h3>📱 Device Insights</h3>
+          <p class="text-muted mt-2">Mobile, desktop, tablet — know how users access your links.</p>
+          <div class="stat-value mt-3 gradient-text">58%</div>
+          <p class="text-muted">mobile traffic</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features" style="background:var(--bg-secondary)">
+    <div class="container">
+      <div class="text-center reveal mb-4">
+        <h2>Everything You Need</h2>
+        <p class="text-muted">Enterprise-grade features for modern link management</p>
+      </div>
+      <div class="feature-grid">
+        <div class="glass-card feature-card reveal"><div class="feature-icon">🔗</div><h3>Custom Short Links</h3><p class="text-muted">Branded aliases, custom domains, and memorable URLs.</p></div>
+        <div class="glass-card feature-card reveal"><div class="feature-icon">📷</div><h3>QR Code Generator</h3><p class="text-muted">Styled QR codes with colors, logos, and templates.</p></div>
+        <div class="glass-card feature-card reveal"><div class="feature-icon">🎯</div><h3>Campaign Management</h3><p class="text-muted">Group links, track performance, schedule launches.</p></div>
+        <div class="glass-card feature-card reveal"><div class="feature-icon">👥</div><h3>Team Collaboration</h3><p class="text-muted">Shared workspaces with roles and permissions.</p></div>
+        <div class="glass-card feature-card reveal"><div class="feature-icon">🔒</div><h3>Link Security</h3><p class="text-muted">Password protection, expiration, and access logs.</p></div>
+        <div class="glass-card feature-card reveal"><div class="feature-icon">⚡</div><h3>API Integration</h3><p class="text-muted">RESTful API for programmatic link management.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="text-center reveal mb-4">
+        <h2>Simple <span class="gradient-text">Pricing</span></h2>
+        <p class="text-muted">Start free, scale as you grow</p>
+      </div>
+      <div class="grid grid-3 gap-3">
+        <div class="glass-card pricing-card reveal">
+          <h3>Starter</h3>
+          <div class="price">$0<span>/month</span></div>
+          <ul style="list-style:none;text-align:left;margin:1.5rem 0">
+            <li class="mb-2">✓ 500 links/month</li>
+            <li class="mb-2">✓ Basic analytics</li>
+            <li class="mb-2">✓ Standard QR codes</li>
+          </ul>
+          <a href="dashboard.html" class="btn btn-secondary" style="width:100%">Get Started</a>
+        </div>
+        <div class="glass-card pricing-card featured reveal">
+          <h3>Pro</h3>
+          <div class="price">$29<span>/month</span></div>
+          <ul style="list-style:none;text-align:left;margin:1.5rem 0">
+            <li class="mb-2">✓ 10,000 links/month</li>
+            <li class="mb-2">✓ Advanced analytics</li>
+            <li class="mb-2">✓ Custom QR branding</li>
+            <li class="mb-2">✓ 5 team members</li>
+          </ul>
+          <a href="subscription.html" class="btn btn-primary" style="width:100%">Start Free Trial</a>
+        </div>
+        <div class="glass-card pricing-card reveal">
+          <h3>Enterprise</h3>
+          <div class="price">$99<span>/month</span></div>
+          <ul style="list-style:none;text-align:left;margin:1.5rem 0">
+            <li class="mb-2">✓ Unlimited links</li>
+            <li class="mb-2">✓ SSO & API access</li>
+            <li class="mb-2">✓ Dedicated support</li>
+          </ul>
+          <a href="contact.html" class="btn btn-secondary" style="width:100%">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="text-center reveal mb-4"><h2>Loved by Teams</h2></div>
+      <div class="grid grid-2 gap-3">
+        <div class="glass-card testimonial-card reveal">
+          <p class="testimonial-text">"LinkPulse transformed how we track campaign performance. The analytics dashboard is incredibly detailed."</p>
+          <div class="testimonial-author"><div class="avatar">MD</div><div><strong>Marketing Director</strong><br><span class="text-muted">Tech Startup</span></div></div>
+        </div>
+        <div class="glass-card testimonial-card reveal">
+          <p class="testimonial-text">"Custom aliases and QR codes made our event marketing seamless. Highly recommend for enterprise teams."</p>
+          <div class="testimonial-author"><div class="avatar">EM</div><div><strong>Events Manager</strong><br><span class="text-muted">Global Corp</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section text-center" style="background:var(--gradient-primary);padding:4rem 0">
+    <div class="container reveal">
+      <h2 style="color:white;margin-bottom:1rem">Ready to supercharge your links?</h2>
+      <p style="color:rgba(255,255,255,0.9);margin-bottom:2rem">Join thousands of teams using LinkPulse today.</p>
+      <a href="create-link.html" class="btn btn-lg" style="background:white;color:var(--primary)">Create Your First Link →</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="nav-logo" style="margin-bottom:1rem;display:inline-flex">⚡ Link<span>Pulse</span></a>
+          <p class="text-muted">Premium URL shortening and link analytics for modern teams.</p>
+        </div>
+        <div><h4>Product</h4><ul><li><a href="dashboard.html">Dashboard</a></li><li><a href="analytics.html">Analytics</a></li><li><a href="qr-generator.html">QR Generator</a></li><li><a href="api.html">API</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="subscription.html">Pricing</a></li></ul></div>
+        <div><h4>Legal</h4><ul><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="security.html">Security</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 LinkPulse. Demo platform.</span><span>Built with HTML, CSS & JavaScript</span></div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/themes.js"></script>
+  <script src="js/notifications.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports & Export — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/analytics.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header reveal"><h1>Reports & Export</h1><p>Generate and download comprehensive analytics reports</p></div>
+      <div class="export-grid reveal">
+        <div class="export-option glass-card" onclick="Notifications.success('CSV export started')"><div class="icon">📊</div><strong>CSV Export</strong><p class="text-muted mt-1">All link data</p></div>
+        <div class="export-option glass-card" onclick="Notifications.success('PDF report generating')"><div class="icon">📄</div><strong>PDF Report</strong><p class="text-muted mt-1">Visual summary</p></div>
+        <div class="export-option glass-card" onclick="Notifications.success('JSON export ready')"><div class="icon">{ }</div><strong>JSON API</strong><p class="text-muted mt-1">Raw data</p></div>
+        <div class="export-option glass-card" onclick="Notifications.success('Excel file downloaded')"><div class="icon">📗</div><strong>Excel</strong><p class="text-muted mt-1">Spreadsheet format</p></div>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Scheduled Reports</h3>
+        <div class="table-wrap"><table><thead><tr><th>Report</th><th>Frequency</th><th>Format</th><th>Recipients</th><th>Last Sent</th><th>Status</th></tr></thead>
+        <tbody><tr><td>Weekly Traffic Summary</td><td>Weekly</td><td>PDF</td><td>team@workspace.io</td><td>2025-05-25</td><td><span class="badge badge-success">Active</span></td></tr>
+        <tr><td>Monthly Analytics</td><td>Monthly</td><td>CSV + PDF</td><td>analytics@workspace.io</td><td>2025-05-01</td><td><span class="badge badge-success">Active</span></td></tr>
+        <tr><td>Campaign Performance</td><td>Daily</td><td>JSON</td><td>api-endpoint</td><td>2025-05-26</td><td><span class="badge badge-success">Active</span></td></tr>
+        <tr><td>Security Audit Log</td><td>Weekly</td><td>CSV</td><td>security@workspace.io</td><td>2025-05-24</td><td><span class="badge badge-success">Active</span></td></tr></tbody></table></div>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Report History</h3><div id="report-history"></div></div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{const reports=['March 2025 Analytics','Q1 Campaign Summary','Device Breakdown Report','Geographic Traffic Report','API Usage Report'];document.getElementById('report-history').innerHTML=reports.map((r,i)=>`<div class="link-item"><div><strong>${r}</strong><p class="text-muted">Generated 2025-0${5-i}-${20-i*3} • 2.${i+1} MB</p></div><button class="btn btn-ghost btn-sm">Download</button></div>`).join('');});</script>
+</body>
+</html>

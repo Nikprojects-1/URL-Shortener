@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/analytics.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout">
+    <div class="main-content">
+      <header class="topbar"></header>
+      <main class="page-content">
+        <div class="analytics-header reveal">
+          <div><h1>Analytics Dashboard</h1><p>Comprehensive traffic insights across all your links</p></div>
+          <div class="date-range-picker">
+            <button class="filter-chip">Today</button>
+            <button class="filter-chip active">30 days</button>
+            <button class="filter-chip">90 days</button>
+            <button class="btn btn-secondary btn-sm">Export ↓</button>
+          </div>
+        </div>
+        <div class="metric-row reveal" id="analytics-metrics"></div>
+        <div class="chart-card reveal mb-3"><h3>Daily Traffic (30 days)</h3><canvas id="clicks-chart"></canvas></div>
+        <div class="charts-grid">
+          <div class="chart-card reveal"><h3>Device Breakdown</h3><div class="donut-container"><canvas id="device-donut"></canvas><div class="chart-legend"></div></div></div>
+          <div class="chart-card reveal"><h3>Browser Usage</h3><div class="donut-container"><canvas id="browser-donut"></canvas><div class="chart-legend"></div></div></div>
+        </div>
+        <div class="chart-card reveal mt-3"><h3>Click Heatmap (by hour)</h3><div class="heatmap" id="click-heatmap"></div><div class="heatmap-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div>
+        <div class="dashboard-row mt-3">
+          <div class="glass-card reveal"><h3 class="mb-3">Top Referrers</h3><div id="referrers-list"></div></div>
+          <div class="glass-card reveal"><h3 class="mb-3">Monthly Comparison</h3><div class="bar-chart" id="monthly-bars"></div></div>
+        </div>
+        <div class="compare-grid mt-3 reveal">
+          <div class="compare-card glass-card"><div class="period">This Month</div><div class="stat-value">612K</div><div class="diff text-success">↑ 12.4%</div></div>
+          <div class="compare-card glass-card"><div class="period">Last Month</div><div class="stat-value">545K</div><div class="diff text-muted">baseline</div></div>
+          <div class="compare-card glass-card"><div class="period">YoY</div><div class="stat-value">+89%</div><div class="diff text-success">↑ growing</div></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/data.js"></script><script src="js/charts.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script><script src="js/analytics.js"></script>
+</body>
+</html>

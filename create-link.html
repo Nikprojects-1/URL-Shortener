@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Short Link — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout">
+    <div class="main-content">
+      <header class="topbar"></header>
+      <main class="page-content">
+        <div class="page-header reveal"><h1>Create Short Link</h1><p>Shorten URLs with custom options and advanced settings</p></div>
+        <div class="dashboard-row">
+          <div class="glass-card reveal" style="flex:2">
+            <form id="create-link-form">
+              <div class="form-group"><label class="form-label">Long URL *</label><input type="url" class="form-input" id="long-url-input" placeholder="https://example.com/your-long-page" required /></div>
+              <div class="form-group"><label class="form-label">Custom Alias (optional)</label><div class="input-group"><span class="text-muted" style="padding:0.875rem">lnk.io/</span><input type="text" class="form-input" placeholder="my-custom-link" /></div></div>
+              <div class="grid grid-2 gap-2">
+                <div class="form-group"><label class="form-label">Expiration Date</label><input type="date" class="form-input" /></div>
+                <div class="form-group"><label class="form-label">Campaign</label><select class="form-select"><option>Summer Product Launch 2025</option><option>Q2 Newsletter Campaign</option><option>Mobile App Install Drive</option><option>None</option></select></div>
+              </div>
+              <div class="form-group"><label class="form-label"><input type="checkbox" /> Password protect this link</label><input type="password" class="form-input mt-2" placeholder="Enter password" /></div>
+              <div class="form-group"><label class="form-label">Tags</label><input type="text" class="form-input" placeholder="marketing, product, launch" /></div>
+              <button type="submit" class="btn btn-primary btn-lg">Generate Short Link →</button>
+            </form>
+            <div id="link-preview-result" class="mt-4 hidden"></div>
+          </div>
+          <div>
+            <div class="glass-card reveal mb-3"><h3 class="mb-2">Link Preview</h3><div id="preview-card" class="text-muted">Enter a URL to see preview</div></div>
+            <div class="glass-card reveal mb-3"><h3 class="mb-2">✨ AI Suggestions</h3><div id="ai-suggestions"></div></div>
+            <div class="glass-card reveal"><h3 class="mb-2">Share</h3><div class="flex gap-2"><button class="btn btn-secondary btn-sm">Twitter</button><button class="btn btn-secondary btn-sm">LinkedIn</button><button class="btn btn-secondary btn-sm">Email</button></div></div>
+          </div>
+        </div>
+        <div class="glass-card reveal mt-3"><h3 class="mb-3">Recent Short Links</h3><div id="recent-short-links"></div></div>
+      </main>
+    </div>
+  </div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('ai-suggestions').innerHTML = DEMO.aiSuggestions.map(s => `<div class="ai-suggestion">${s}</div>`).join('');
+      document.getElementById('recent-short-links').innerHTML = DEMO.links.slice(0, 10).map(l => `<div class="link-item"><div class="link-info"><div class="link-title">${l.title}</div><div class="link-url">${l.shortUrl}</div></div><button class="btn btn-ghost btn-sm" data-copy="https://${l.shortUrl}">Copy</button></div>`).join('');
+      document.getElementById('create-link-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const alias = 'lnk.io/' + Math.random().toString(36).slice(2, 8);
+        document.getElementById('link-preview-result').classList.remove('hidden');
+        document.getElementById('link-preview-result').innerHTML = `<div class="glass-card" style="border-color:var(--success)"><h3>✅ Link Created!</h3><div class="input-group mt-2"><input class="form-input" value="https://${alias}" readonly /><button class="btn btn-primary" data-copy="https://${alias}">Copy</button><a href="qr-generator.html" class="btn btn-secondary">QR Code</a></div></div>`;
+        Notifications.success('Short link created successfully!');
+      });
+      document.getElementById('long-url-input')?.addEventListener('input', e => {
+        try {
+          document.getElementById('preview-card').innerHTML = e.target.value ? `<strong>${new URL(e.target.value).hostname}</strong><p class="text-muted mt-1">${e.target.value}</p>` : 'Enter a URL to see preview';
+        } catch {
+          document.getElementById('preview-card').innerHTML = `<p class="text-muted">${e.target.value}</p>`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

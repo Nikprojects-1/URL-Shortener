@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Integration — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header reveal"><h1>API Integration</h1><p>Programmatically manage links and analytics</p></div>
+      <div class="glass-card reveal mb-3"><h3 class="mb-2">API Keys</h3>
+        <div class="link-item"><div><strong>Production Key</strong><p class="link-url">lp_live_••••••••••••••••4a2f</p></div><button class="btn btn-ghost btn-sm">Regenerate</button></div>
+        <div class="link-item"><div><strong>Test Key</strong><p class="link-url">lp_test_••••••••••••••••8b1c</p></div><button class="btn btn-ghost btn-sm">Regenerate</button></div>
+      </div>
+      <div class="glass-card reveal"><h3 class="mb-3">API Playground</h3>
+        <div class="api-terminal"><span class="method">POST</span> <span class="endpoint">https://api.linkpulse.io/v1/links</span><br><br>{<br>&nbsp;&nbsp;"url": "https://example.com/long-page",<br>&nbsp;&nbsp;"alias": "my-link",<br>&nbsp;&nbsp;"campaign_id": "camp_123"<br>}</div>
+        <button class="btn btn-primary mt-3" onclick="Notifications.success('Request sent — demo response received')">Send Test Request</button>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Deep Linking</h3>
+        <p class="text-muted mb-2">Configure mobile app deep links for iOS and Android.</p>
+        <div class="grid grid-2 gap-2"><div class="form-group"><label class="form-label">iOS App ID</label><input class="form-input" value="com.app.example" /></div><div class="form-group"><label class="form-label">Android Package</label><input class="form-input" value="com.app.example" /></div></div>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Endpoints</h3>
+        <div class="table-wrap"><table><thead><tr><th>Method</th><th>Endpoint</th><th>Description</th></tr></thead>
+        <tbody><tr><td><span class="badge badge-success">GET</span></td><td>/v1/links</td><td>List all links</td></tr>
+        <tr><td><span class="badge badge-primary">POST</span></td><td>/v1/links</td><td>Create short link</td></tr>
+        <tr><td><span class="badge badge-success">GET</span></td><td>/v1/links/:id</td><td>Get link details</td></tr>
+        <tr><td><span class="badge badge-warning">PUT</span></td><td>/v1/links/:id</td><td>Update link</td></tr>
+        <tr><td><span class="badge badge-danger">DELETE</span></td><td>/v1/links/:id</td><td>Delete link</td></tr>
+        <tr><td><span class="badge badge-success">GET</span></td><td>/v1/analytics/:id</td><td>Get analytics</td></tr></tbody></table></div>
+      </div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+</body>
+</html>

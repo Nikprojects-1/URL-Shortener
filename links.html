@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Link Management — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout">
+    <div class="main-content">
+      <header class="topbar"></header>
+      <main class="page-content">
+        <div class="page-header flex-between reveal">
+          <div><h1>Link Management</h1><p id="links-count">150 links</p></div>
+          <a href="create-link.html" class="btn btn-primary">+ Create Link</a>
+        </div>
+        <div class="filters-bar reveal">
+          <input type="search" class="form-input" id="links-search" placeholder="Search links..." style="max-width:300px" />
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="active">Active</button>
+          <button class="filter-chip" data-filter="favorite">Favorites</button>
+          <button class="filter-chip" data-filter="archived">Archived</button>
+          <button class="filter-chip" data-filter="password">Password Protected</button>
+        </div>
+        <div class="tabs reveal"><button class="tab active" data-view="table">Table View</button><button class="tab" data-view="grid">Card View</button></div>
+        <div id="table-view" class="table-wrap reveal">
+          <table>
+            <thead><tr><th><input type="checkbox" /></th><th>Link</th><th>Destination</th><th>Clicks</th><th>Status</th><th>Created</th><th>Actions</th></tr></thead>
+            <tbody id="links-table-body"></tbody>
+          </table>
+        </div>
+        <div id="grid-view" class="links-grid mt-3 hidden" id="links-grid-container">
+          <div class="links-grid" id="links-grid"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script><script src="js/links.js"></script>
+  <script>document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');document.getElementById('table-view').classList.toggle('hidden',t.dataset.view==='grid');document.getElementById('grid-view').classList.toggle('hidden',t.dataset.view!=='grid');}));</script>
+</body>
+</html>

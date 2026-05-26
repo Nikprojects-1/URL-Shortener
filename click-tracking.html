@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click Tracking — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/analytics.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header reveal"><h1>Click Tracking</h1><p>Real-time and historical click data for all links</p></div>
+      <div class="metric-row reveal">
+        <div class="metric-mini"><div class="value">24,512</div><div class="label">Clicks Today</div></div>
+        <div class="metric-mini"><div class="value">1,847</div><div class="label">Clicks/Hour</div></div>
+        <div class="metric-mini"><div class="value">892</div><div class="label">Active Links</div></div>
+        <div class="metric-mini"><div class="value">3.2s</div><div class="label">Avg Response</div></div>
+      </div>
+      <div class="chart-card reveal"><h3>Real-time Click Stream</h3><canvas id="clicks-chart"></canvas></div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Recent Clicks</h3>
+        <div class="table-wrap"><table><thead><tr><th>Time</th><th>Link</th><th>Country</th><th>Device</th><th>Referrer</th><th>Unique</th></tr></thead><tbody id="click-log"></tbody></table></div>
+      </div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/charts.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{Charts.lineChart('clicks-chart',DEMO.dailyClicks);const refs=DEMO.referrers.map(r=>r.source);document.getElementById('click-log').innerHTML=Array.from({length:40},(_,i)=>{const l=DEMO.links[i%20];return`<tr><td>2025-05-26 ${String(23-i%24).padStart(2,'0')}:${String(59-i).padStart(2,'0')}:00</td><td>${l.shortUrl}</td><td>${DEMO.countries[i%10].flag} ${DEMO.countries[i%10].name}</td><td>${DEMO.devices[i%3].type}</td><td>${refs[i%refs.length]}</td><td>${i%3===0?'Yes':'No'}</td></tr>`}).join('');});</script>
+</body>
+</html>

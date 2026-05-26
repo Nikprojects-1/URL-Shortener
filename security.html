@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security Center — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header reveal"><h1>Security Center</h1><p>Protect your links and monitor access activity</p></div>
+      <div class="alert-banner danger reveal">⚠️ Suspicious click pattern detected on 2 links in the last 24 hours</div>
+      <div class="alert-banner warning reveal">🔔 3 links expiring within the next 7 days</div>
+      <div class="dashboard-grid reveal">
+        <div class="stat-card"><div class="stat-label">Protected Links</div><div class="stat-value">23</div></div>
+        <div class="stat-card"><div class="stat-label">Blocked Attempts</div><div class="stat-value">156</div></div>
+        <div class="stat-card"><div class="stat-label">2FA Enabled</div><div class="stat-value">✓</div></div>
+        <div class="stat-card"><div class="stat-label">API Keys Active</div><div class="stat-value">3</div></div>
+      </div>
+      <div class="dashboard-row">
+        <div class="glass-card reveal"><h3 class="mb-3">Link Security Settings</h3>
+          <div class="form-group"><label class="form-label"><input type="checkbox" checked /> Enable password protection by default</label></div>
+          <div class="form-group"><label class="form-label">Default expiration</label><select class="form-select"><option>Never</option><option>30 days</option><option>90 days</option><option>1 year</option></select></div>
+          <div class="form-group"><label class="form-label"><input type="checkbox" checked /> Block suspicious traffic</label></div>
+          <button class="btn btn-primary">Save Settings</button>
+        </div>
+        <div class="glass-card reveal"><h3 class="mb-3">Recent Alerts</h3><div id="security-alerts"></div></div>
+      </div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Access Logs</h3>
+        <div class="table-wrap"><table><thead><tr><th>Event</th><th>IP</th><th>Location</th><th>Device</th><th>Time</th><th>Status</th></tr></thead><tbody id="security-logs"></tbody></table></div>
+      </div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{document.getElementById('security-logs').innerHTML=DEMO.securityLogs.map(l=>`<tr><td>${l.event}</td><td>${l.ip}</td><td>${l.location}</td><td>${l.device}</td><td>${l.time}</td><td><span class="badge badge-${l.status==='success'?'success':l.status==='blocked'?'danger':'warning'}">${l.status}</span></td></tr>`).join('');document.getElementById('security-alerts').innerHTML=DEMO.notifications.filter(n=>n.type==='security'||n.type==='warning').map(n=>`<div class="link-item"><div><strong>${n.title}</strong><p class="text-muted" style="font-size:0.85rem">${n.message}</p></div><span class="text-muted">${n.time}</span></div>`).join('');});</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activity Logs — LinkPulse</title>
+  <link rel="stylesheet" href="css/style.css" /><link rel="stylesheet" href="css/dashboard.css" /><link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="app-layout"><div class="main-content">
+    <header class="topbar"></header>
+    <main class="page-content">
+      <div class="page-header reveal"><h1>Activity Logs</h1><p>Complete audit trail of workspace actions</p></div>
+      <div class="timeline reveal" id="activity-timeline"></div>
+      <div class="glass-card reveal mt-3"><h3 class="mb-3">Detailed Log Table</h3>
+        <div class="table-wrap"><table><thead><tr><th>Action</th><th>Detail</th><th>User</th><th>Time</th></tr></thead><tbody id="activity-table"></tbody></table></div>
+      </div>
+    </main>
+  </div></div>
+  <script src="js/data.js"></script><script src="js/themes.js"></script><script src="js/notifications.js"></script><script src="js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',()=>{let acts=[...DEMO.activities];for(let i=0;i<40;i++)acts.push({...DEMO.activities[i%15],time:`${i+1} days ago`});document.getElementById('activity-timeline').innerHTML=acts.slice(0,20).map(a=>`<div class="timeline-item"><div class="timeline-time">${a.time}</div><div class="timeline-text"><strong>${a.user}</strong> — ${a.action}<br><span class="text-muted">${a.detail}</span></div></div>`).join('');document.getElementById('activity-table').innerHTML=acts.map(a=>`<tr><td>${a.action}</td><td>${a.detail}</td><td>${a.user}</td><td>${a.time}</td></tr>`).join('');});</script>
+</body>
+</html>
